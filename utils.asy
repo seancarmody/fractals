@@ -10,18 +10,15 @@
 // Source: Charles Staats
 // https://tex.stackexchange.com/questions/249659/how-to-center-a-label-inside-a-closed-path-in-asymptote
 pair[] vertices(path g) { 
-  return sequence(new pair(int i) { return point(g,i); }, 
-                  size(g)); 
+  return sequence(new pair(int i) { return point(g,i); }, size(g)); 
 }
 
-// Create apply a transform as though P was the origin
+// Create apply a transform centred on the point P
 transform contract(pair P, transform t) {return shift(P) * t * shift(-P);}
 
 // Calculate the fixed point of a transform (no error trapping)
 pair fixed(transform t)
-{
-  return inverse(identity + scale(-1) * shiftless(t)) * shift(t) * (0,0);
-}
+{return inverse(identity + scale(-1) * shiftless(t)) * shift(t) * (0,0);}
 
 // Delete duplicates from an integer array - note: order is *not* preserved
 int[] unique(int[] arr)
@@ -53,14 +50,6 @@ pair[] unique(pair[] arr)
   return uniq;
 }
 
-// Convert string to integer array
-from mapArray(Src=string, Dst=int) access map;
-int[] string2int(string word, string first="a")
-{
-  int n = ascii(first);
-  return map(new int (string s){return(ascii(s) - n);}, array(word));
-}
-
 // Apply a transform to a series of points
 from mapArray(Src=pair, Dst=transform) access map;
 transform[] ptransforms(pair[] pts, transform t)
@@ -82,6 +71,8 @@ int leftmost(pair [] pset)
 
 // Return the convex hull of an array of points
 // Uses the Jarvis March (aka gift wrapping) algorithm
+// Calculation uses orient function to determine direction
+// and values below a tolerance (default 1e-15) are treated as zero
 path jarvis(pair[] pset, real tol = 1e-15)
 {
   path hull;
