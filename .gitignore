@@ -1,0 +1,7 @@
+# Asymptote gitignore
+
+# OSX
+.DS_Store
+
+# BBEdit
+*.bbprojectd/*
