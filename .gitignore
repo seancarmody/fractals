@@ -3,5 +3,8 @@
 # OSX
 .DS_Store
 
+# Image files
+images/*
+
 # BBEdit
 *.bbprojectd/*

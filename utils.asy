@@ -16,6 +16,13 @@ pair[] vertices(path g) {
 // Create apply a transform centred on the point P
 transform contract(pair P, transform t) {return shift(P) * t * shift(-P);}
 
+// Apply a transform to each point on a path
+transform[] pathcontract(path shp, transform t)
+{
+  pair[] pts = vertices(shp);
+  return sequence(new transform(int i) {return contract(pts[i], t);}, pts.length);
+}
+
 // Calculate the fixed point of a transform (no error trapping)
 pair fixed(transform t)
 {return inverse(identity + scale(-1) * shiftless(t)) * shift(t) * (0,0);}
