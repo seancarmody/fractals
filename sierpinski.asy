@@ -14,6 +14,7 @@ import fractals;
 // Create an equilateral triangle and contraction at each point
 path tri = polygon(3);
 transform[] t = pathcontract(tri, scale(0.5));
+
 // Uncomment code below to generate rotation variant
 // transform[] t = pathcontract(tri, rotate(45) * scale(0.515));
 path h = hull(t, depth = 6);
