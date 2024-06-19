@@ -1,14 +1,14 @@
 // anim.asy
 //
-//
 // Author:    Sean Carmody (sean@stubbornmule.net)
 // Created:   18 Jun 2024
 // Modified:  18 Jun 2024
 
 import animation;
 
-settings.outformat = "pdf";
-size(10cm);
+// settings.outformat = "pdf";
+// size(10cm);
+size(0,500);
 
 import fractals;
 
@@ -20,12 +20,16 @@ transform[] t = pathcontract(tri, scale(0.5));
 
 // Draw fractal
 
-for (int i = 0, i < 10; ++i)
+for (int i = 0; i < 11; ++i)
 {
   save();
   drawfrac(t, tri, depth = i, blue);
+  mov.add();
   restore();
 }
 
-shipout("images/triangle", bbox(0.25cm, white));
+// shipout("images/tri-anim", bbox(0.25cm, white));
 erase();
+
+// Merge the images into a gif animation.
+mov.movie(BBox(0.25cm, white),loops=10,delay=250);
