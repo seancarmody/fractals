@@ -31,4 +31,5 @@ drawword(t, "bca");
 drawword(t, "cab", red);
 
 shipout("images/triangle", bbox(0.25cm, white));
+// Don't save a default image
 erase();
