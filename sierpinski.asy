@@ -12,14 +12,14 @@ import fractals;
 
 // Create an equilateral triangle and contraction at each point
 path tri = polygon(3);
-transform[] t = pathcontract(tri, scale(0.5));
+transform[] t = ptransforms(tri, scale(0.5));
 
 // Uncomment code below to generate rotation variant
-// transform[] t = pathcontract(tri, rotate(45) * scale(0.515));
+// transform[] t = ptransforms(tri, rotate(45) * scale(0.515));
 path h = hull(t, depth = 6);
 
 // Draw fractal
-drawfrac(t, h, depth = 9, blue);
+drawfrac(t, h, depth = 9, magenta);
 
 // Add cycle points
 drawword(t, "a", SE);
@@ -27,7 +27,7 @@ drawword(t, "b", N);
 drawword(t, "c", SW);
 drawword(t, "abc");
 drawword(t, "bca");
-drawword(t, "cab", red);
+drawword(t, "cab", blue);
 
 shipout("images/triangle", bbox(0.25cm, white));
 // Don't save a default image
