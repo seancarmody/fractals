@@ -5,9 +5,6 @@
 // Modified:  18 Jun 2024
 
 import animation;
-
-// settings.outformat = "pdf";
-// size(10cm);
 size(0,500);
 
 import fractals;
@@ -28,7 +25,6 @@ for (int i = 0; i < 11; ++i)
   restore();
 }
 
-// shipout("images/tri-anim", bbox(0.25cm, white));
 erase();
 
 // Merge the images into a gif animation.
