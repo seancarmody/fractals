@@ -31,6 +31,26 @@ transform fold(transform[] arr)
   return arr[0] * fold(arr[1:]);  
 }
 
+// Smoothly interpolate from transform t to transform s
+transform morph(transform t, transform s, real alpha)
+{
+  return scale(1 - alpha) * t + scale(alpha) * s;
+}
+
+// Smoothly interpolate from transform t[i] to transform s[i]
+transform[] morph(transform t[], transform s[], real alpha)
+{
+  transform[] res;
+  if (t.length == s.length)
+  {
+    for (int i = 0; i < t.length; ++i)
+    {
+      res[i] = morph(t[i], s[i], alpha);
+    }
+  }
+  return res;
+}
+
 // Turn a string into a sequence of transforms
 transform word(transform[] t, string w, string first = "A")
 {

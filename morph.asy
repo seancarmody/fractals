@@ -11,25 +11,6 @@ size(0,500);
 
 animation mov;
 
-// Smoothly interpolate from transform t to transform s
-transform morph(transform t, transform s, real alpha)
-{
-  return scale(1 - alpha) * t + scale(alpha) * s;
-}
-
-transform[] morph(transform t[], transform s[], real alpha)
-{
-  transform[] res;
-  if (t.length == s.length)
-  {
-    for (int i = 0; i < t.length; ++i)
-    {
-      res[i] = morph(t[i], s[i], alpha);
-    }
-  }
-  return res;
-}
-
 path tri = polygon(3);
 transform[] t0 = ptransforms(tri, scale(0.5));
 transform[] t1 = ptransforms(tri, rotate(60)*scale(0.3, 0.7));
