@@ -16,7 +16,7 @@ animation mov;
 
 // Create an equilateral triangle and contraction at each point
 path tri = polygon(3);
-transform[] t = pathcontract(tri, scale(0.5));
+transform[] t = ptransforms(tri, scale(0.5));
 
 // Draw fractal
 

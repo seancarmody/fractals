@@ -5,7 +5,6 @@
 // Created:   18 Jun 2024
 // Modified:  18 Jun 2024
 
-
 settings.outformat = "pdf";
 size(10cm);
 

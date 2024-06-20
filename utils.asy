@@ -16,13 +16,6 @@ pair[] vertices(path g) {
 // Create apply a transform centred on the point P
 transform contract(pair P, transform t) {return shift(P) * t * shift(-P);}
 
-// Apply a transform to each point on a path
-transform[] pathcontract(path shp, transform t)
-{
-  pair[] pts = vertices(shp);
-  return sequence(new transform(int i) {return contract(pts[i], t);}, pts.length);
-}
-
 // Calculate the fixed point of a transform (no error trapping)
 pair fixed(transform t)
 {return inverse(identity + scale(-1) * shiftless(t)) * shift(t) * (0,0);}
@@ -57,11 +50,19 @@ pair[] unique(pair[] arr)
   return uniq;
 }
 
-// Apply a transform to a series of points
+// Shift a transform to be centred on eacg of a sequence of points
 from mapArray(Src=pair, Dst=transform) access map;
 transform[] ptransforms(pair[] pts, transform t)
 {
   return map(new transform (pair P){return shift(P) * t * shift(-P);}, pts);
+}
+
+// Shift a transform to be centred on eacg of a sequence of points on a path
+transform[] ptransforms(path shp, transform t)
+{
+  pair[] pts = vertices(shp);
+//   return sequence(new transform(int i) {return contract(pts[i], t);}, pts.length);
+  return ptransforms(pts, t);
 }
 
 // Get index of leftmost point from a point set (ties return lowest point)
