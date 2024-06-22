@@ -61,7 +61,7 @@ transform word(transform[] t, string w, string first = "A")
 }
 
 // Calculate the fixed point of a word
-pair fixedword(transform[] t , string w, string first = "A")
+pair fixedword(transform[] t , string w, string first = "a")
 {
   return fixed(word(t, w, first));
 }
@@ -72,7 +72,7 @@ void drawword(transform[] t , string w,
   pen p = currentpen, picture pic = currentpicture)
 {
   if (length(lab)==0) {
-    if (length(w) > 1) {lab = "$(" + w + ")*$";} else {lab = "$" + w + "*$";}
+    if (length(w) > 1) {lab = "$(" + w + ")^*$";} else {lab = "$" + w + "^*$";}
   }
   pair pt = fixedword(t, w, first);
   dot(pic, pt, p);

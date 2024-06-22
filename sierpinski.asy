@@ -21,14 +21,20 @@ path h = hull(t, depth = 6);
 // Draw fractal
 drawfrac(t, h, depth = 9, lightblue);
 
+// Draw line
+pair bc = fixedword(t, "bc");
+pair A = fixedword(t, "a");
+draw(bc--A, mediumgrey);
+
 // Add cycle points
-drawword(t, "a", "$A$", SE);
+drawword(t, "a", "$A = a^\ast$", SE);
 drawword(t, "b", "$B$", N);
 drawword(t, "c", "$C$", SW);
+drawword(t, "bc", NW);
 drawword(t, "abc");
 drawword(t, "bca");
-drawword(t, "cab", blue);
+drawword(t, "cab", grey);
 
-shipout("images/triangle", bbox(0.25cm, white));
+shipout("triangle", bbox(0.25cm, white));
 // Don't save a default image
 erase();
