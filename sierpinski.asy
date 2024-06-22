@@ -1,10 +1,12 @@
 // sierpinksi.asy
-// Draw Sierpinski 
+// Draw Sierpinski triangle
 //
 // Author:    Sean Carmody (sean@stubbornmule.net)
 // Created:   18 Jun 2024
-// Modified:  18 Jun 2024
+// Modified:  22 Jun 2024
 
+// To convert pdf output to png:
+// pdftoppm triangle.pdf -png -singlefile triangle
 settings.outformat = "pdf";
 size(250);
 
@@ -21,7 +23,7 @@ path h = hull(t, depth = 6);
 // Draw fractal
 drawfrac(t, h, depth = 9, lightblue);
 
-// Draw line
+// Draw line through 3-cycles and 2-cycle
 pair bc = fixedword(t, "bc");
 pair A = fixedword(t, "a");
 draw(bc--A, mediumgrey);
@@ -36,5 +38,6 @@ drawword(t, "bca");
 drawword(t, "cab", grey);
 
 shipout("triangle", bbox(0.25cm, white));
+
 // Don't save a default image
 erase();
