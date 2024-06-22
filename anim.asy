@@ -6,7 +6,7 @@
 
 import animation;
 // size(0,500);
-size(150);
+size(250);
 
 import fractals;
 
