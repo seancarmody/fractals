@@ -5,7 +5,8 @@
 // Modified:  18 Jun 2024
 
 import animation;
-size(0,500);
+// size(0,500);
+size(250);
 
 import fractals;
 
