@@ -19,12 +19,12 @@ transform[] t = ptransforms(tri, scale(0.5));
 path h = hull(t, depth = 6);
 
 // Draw fractal
-drawfrac(t, h, depth = 9, magenta);
+drawfrac(t, h, depth = 9, lightblue);
 
 // Add cycle points
-drawword(t, "a", SE);
-drawword(t, "b", N);
-drawword(t, "c", SW);
+drawword(t, "a", "$A$", SE);
+drawword(t, "b", "$B$", N);
+drawword(t, "c", "$C$", SW);
 drawword(t, "abc");
 drawword(t, "bca");
 drawword(t, "cab", blue);

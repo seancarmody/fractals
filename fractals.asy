@@ -67,12 +67,16 @@ pair fixedword(transform[] t , string w, string first = "A")
 }
 
 // Label a fixed point
-void drawword(transform[] t , string w, string first = "a", pair dir = NE,
+void drawword(transform[] t , string w, 
+    string lab = "", string first = "a", pair dir = NE,
   pen p = currentpen, picture pic = currentpicture)
 {
+  if (length(lab)==0) {
+    if (length(w) > 1) {lab = "$(" + w + ")*$";} else {lab = "$" + w + "*$";}
+  }
   pair pt = fixedword(t, w, first);
   dot(pic, pt, p);
-  label(pic, "$"+w+"$", pt, dir, p);
+  label(pic, lab, pt, dir, p);
 }
 
 // Generate an approximation of the convex hull
