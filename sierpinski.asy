@@ -6,7 +6,7 @@
 // Modified:  18 Jun 2024
 
 settings.outformat = "pdf";
-size(10cm);
+size(300);
 
 import fractals;
 
