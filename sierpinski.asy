@@ -8,7 +8,7 @@
 // To convert pdf output to png:
 // pdftoppm triangle.pdf -png -singlefile triangle
 settings.outformat = "pdf";
-size(250);
+size(300);
 
 import fractals;
 
