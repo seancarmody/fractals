@@ -8,3 +8,5 @@ images/*
 
 # BBEdit
 *.bbprojectd/*
+
+__pycache__/*
