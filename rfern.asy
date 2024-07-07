@@ -1,4 +1,5 @@
 // rfern.asy
+// Draw Barnsley Fern using random points
 //
 // Author:    Sean Carmody (sean@stubbornmule.net)
 // Created:   7 Jul 2024

@@ -7,12 +7,7 @@
 
 import utils;
 
-// Generate fractal from a random sequence of transforms
-int rand_index(int n, real[] w)
-{
-  return rand() % n;
-}
-
+// Structure to hold Voss tables
 struct voss 
 {
   real[] accept;
@@ -59,8 +54,10 @@ voss voss_tables(real[] p)
 int rvoss(voss v)
 {
   int n = v.accept.length;
-  int i = rand() % n;
+//   int i = rand() % n;
   real u = unitrand();
+  int i = floor(n * u);
+  u = n * u - i;
   if (u < v.accept[i]){return i;}
   return v.alias[i];
 }
