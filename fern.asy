@@ -1,3 +1,6 @@
+// fern.asy
+//
+// Author:    Sean Carmody (sean@stubbornmule.net)
 // Created:   3 Jul 2024
 
 settings.outformat = "pdf";
