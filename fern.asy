@@ -19,6 +19,6 @@ transform[] t = {
 path h = hull(t, depth = 5);
 
 // Draw fractal
-drawfrac(t, h, depth = 11, mediumgreen);
+drawfrac(t, h, depth = 9, mediumgreen);
 
 shipout("fern", bbox(0.25cm, white));
