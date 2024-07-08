@@ -9,16 +9,16 @@ import utils;
 import fractals;
 
 // Structure to hold Voss tables
-struct voss 
+struct vose 
 {
   real[] accept;
   int[] alias;
 }
 
-// Set up Voss tables
-voss voss_tables(real[] p)
+// Set up Vose tables for Walker-Vose alias sampling method
+vose vose_tables(real[] p)
 {
-  voss v;
+  vose v;
   int i, j, n = p.length;
   real[] u;
   real s = sum(p);
@@ -52,7 +52,7 @@ voss voss_tables(real[] p)
   return v;
 }
 
-int rvoss(voss v)
+int rvose(vose v)
 {
   int n = v.accept.length;
 //   int i = rand() % n;
@@ -78,10 +78,10 @@ void genrand(transform[] t, real[] w = psamp(t), int n = 50000,
   if (t.length == 0) {return;}
   pair P = fixed(t[0]);
   if (t.length == 1) {fill(pic, circle(P, scale)); return;}
-  voss v = voss_tables(w);
+  vose v = vose_tables(w);
   for (int i=0; i < n; ++i)
   {
-    P = t[rvoss(v)] * P;
+    P = t[rvose(v)] * P;
     fill(pic, circle(P, scale), p);
   }
   return;
