@@ -17,16 +17,17 @@ real fdim(real[] r, real tol = 1e-14, int maxiter = 100)
   do
   {
     f = sum(map(new real(real x) {return x^s;}, r)) - 1;
-    s = s - f / sum(sequence(new real(int i) {return r[i] * lr[i];}, n));
+    s = s - f / sum(sequence(new real(int i) {return r[i]^s * lr[i];}, n));
     ++k;
   } while (abs(f) > tol && k < maxiter);
   return s;
 }
 
+// Calculate fractal dimension of array of contraction maps
 real fdim(transform[] t, real tol = 1e-14, int maxiter = 100)
 {
-  real[] r = sequence(new real(int i) {return sqrt(det(t[i]));}, t.length);
-  return fdim(r, tol, maxiter);
+  real[] r = sequence(new real(int i) {return det(t[i]);}, t.length);
+  return fdim(r, tol, maxiter) * 2;
 }
 
 // Generate all composites of transforms of a specified
