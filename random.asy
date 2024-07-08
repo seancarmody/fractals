@@ -6,6 +6,7 @@
 // Created:   7 Jul 2024
 
 import utils;
+import fractals;
 
 // Structure to hold Voss tables
 struct voss 
@@ -62,8 +63,17 @@ int rvoss(voss v)
   return v.alias[i];
 }
 
-void genrand(transform[] t, real[] w, int n = 1000, real scale = 1/100, int n0 = 10,
- pen p = currentpen, picture pic = currentpicture)
+// Calculate sampling probabilities array of contraction maps
+real[] psamp(transform[] t, real tol = 1e-14, int maxiter = 100)
+{
+  real[] r = sequence(new real(int i) {return sqrt(det(t[i]));}, t.length);
+  real s = fdim(r, tol, maxiter);
+  return map(new real(real x) {return x^s;}, r);
+}
+
+void genrand(transform[] t, real[] w = psamp(t), int n = 50000,
+  real scale = 1/500, int n0 = 10,
+  pen p = currentpen, picture pic = currentpicture)
 {
   if (t.length == 0) {return;}
   pair P = fixed(t[0]);

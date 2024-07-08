@@ -11,8 +11,7 @@ import utils;
 // Calculate fractal dimension of array of ratios
 real fdim(real[] r, real tol = 1e-14, int maxiter = 100)
 {
-  int n = r.length;
-  int k = 0;
+  int n = r.length, k = 0;
   real[] lr = map(log, r);
   real f, s = 1.5;
   do
@@ -22,6 +21,12 @@ real fdim(real[] r, real tol = 1e-14, int maxiter = 100)
     ++k;
   } while (abs(f) > tol && k < maxiter);
   return s;
+}
+
+real fdim(transform[] t, real tol = 1e-14, int maxiter = 100)
+{
+  real[] r = sequence(new real(int i) {return sqrt(det(t[i]));}, t.length);
+  return fdim(r, tol, maxiter);
 }
 
 // Generate all composites of transforms of a specified
