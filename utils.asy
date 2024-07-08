@@ -20,6 +20,12 @@ transform contract(pair P, transform t) {return shift(P) * t * shift(-P);}
 pair fixed(transform t)
 {return inverse(identity + scale(-1) * shiftless(t)) * shift(t) * (0,0);}
 
+// Calculate the determinant of a transform
+real det(transform t)
+{
+  return t.xx * t.yy - t.xy * t.yx;
+}
+
 // Delete duplicates from an integer array - note: order is *not* preserved
 int[] unique(int[] arr)
 {
