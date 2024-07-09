@@ -11,13 +11,15 @@ import utils;
 // Calculate fractal dimension of array of ratios
 real fdim(real[] r, real tol = 1e-14, int maxiter = 100)
 {
-  int n = r.length, k = 0;
-  real[] lr = map(log, r);
+  real[] nz, lr;
+  for (real x: r){if (x != 0) {nz.push(x);}}
+  lr = map(log, nz);
+  int n = nz.length, k = 0;
   real f, s = 1.5;
   do
   {
-    f = sum(map(new real(real x) {return x^s;}, r)) - 1;
-    s = s - f / sum(sequence(new real(int i) {return r[i]^s * lr[i];}, n));
+    f = sum(map(new real(real x) {return x^s;}, nz)) - 1;
+    s = s - f / sum(sequence(new real(int i) {return nz[i]^s * lr[i];}, n));
     ++k;
   } while (abs(f) > tol && k < maxiter);
   return s;
