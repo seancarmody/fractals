@@ -16,8 +16,16 @@ transform[] t = {
   (0, 0.44, -0.15,  0.28,  0.26, 0.24)
 };
 
-real[] w = {0.01, 0.85, 0.07, 0.07};
+// Wikipedia probabilities
+// real[] w = {0.01, 0.85, 0.07, 0.07};
+// Fractal dimension probabilities
+// with probability 0.01 where det = 0
+real[] w = {0.01, 0.736, 0.124, 0.130};
+// Adjusted fractal
+// real[] w = {0.01, 0.79, 0.10, 0.10};
 
-genrand(t, w, 1000000, scale = 1/500, darkgreen);
+genrand(t, w, 1500000, scale = 1/800, deepgreen + opacity(1, "Multiply"));
+
+// genrand(t, 1000000, scale = 1/500, darkgreen);
 
 shipout("rfern", bbox(0.25cm, white));

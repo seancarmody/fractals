@@ -66,9 +66,9 @@ int rvose(vose v)
 // Calculate sampling probabilities array of contraction maps
 real[] psamp(transform[] t, real tol = 1e-14, int maxiter = 100)
 {
-  real[] r = sequence(new real(int i) {return sqrt(det(t[i]));}, t.length);
+  real[] r = sequence(new real(int i) {return abs(det(t[i]));}, t.length);
   real s = fdim(r, tol, maxiter);
-  return map(new real(real x) {return x^s;}, r);
+  return map(new real(real x) {return abs(x)^s;}, r);
 }
 
 void genrand(transform[] t, real[] w = psamp(t), int n = 50000,

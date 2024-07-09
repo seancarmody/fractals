@@ -26,6 +26,11 @@ real det(transform t)
   return t.xx * t.yy - t.xy * t.yx;
 }
 
+// Calculate the determinants of an array of transforms
+real[] det(transform[] t)
+{
+  return sequence(new real(int i) {return det(t[i]);}, t.length);
+}
 // Delete duplicates from an integer array - note: order is *not* preserved
 int[] unique(int[] arr)
 {

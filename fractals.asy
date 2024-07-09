@@ -26,7 +26,7 @@ real fdim(real[] r, real tol = 1e-14, int maxiter = 100)
 // Calculate fractal dimension of array of contraction maps
 real fdim(transform[] t, real tol = 1e-14, int maxiter = 100)
 {
-  real[] r = sequence(new real(int i) {return det(t[i]);}, t.length);
+  real[] r = sequence(new real(int i) {return abs(det(t[i]));}, t.length);
   return fdim(r, tol, maxiter) * 2;
 }
 
