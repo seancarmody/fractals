@@ -123,7 +123,10 @@ void drawfrac(transform[] tset, int depth = 3, path region,
   transform[] frac = nwords(tset, depth);
   for (transform t: frac)
   {
-    if (border) filldraw(pic, t * region, p); else fill(pic, t * region, p);
+    if (cyclic(region))
+      {
+        if (border) filldraw(pic, t * region, p); else fill(pic, t * region, p);
+      } else {draw(pic, t * region, p);}
   }
   return;
 }
